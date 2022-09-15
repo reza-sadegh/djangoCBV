@@ -1,0 +1,50 @@
+
+{% extends 'mymaster.html' %}
+
+{% block mymessage %}
+<div class="container">
+<h2>Add Employee</h2>
+
+<form  action="addrecord/" method="post">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">First Name</label>
+    <input class="form-control"  name="first">
+  </div>
+  <div class="mb-3">
+    <label for="Last Name" class="form-label">Last Name</label>
+    <input class="form-control" name="last">
+  </div>
+  <div class="mb-3">
+    <label for="Age " class="form-label">Age</label>
+    <input class="form-control" name="age">
+  </div>
+  <div class="mb-3">
+    <label for="Date " class="form-label">Hire Date</label>
+    <input type="text" id="pdpGregorian" />
+    <input type="hidden" id="restxt"  name="date" ><br>
+    <script>
+        $(function() {
+            $("#pdpGregorian").persianDatepicker({
+                formatDate: "YYYY-MM-DD",
+                onSelect: function() {
+                    $("#restxt").val($("#pdpGregorian").attr("data-gdate"));
+                }
+            });
+        });
+    </script>
+  </div>
+
+  <div class="mb-3">
+    <label for="Skill " class="form-label">Skill</label>
+        <select name="skill" size="1" class="form-control">
+            {% for x in skills %}
+            <option>{{ x.skill }}</option>
+            {% endfor %}
+        </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}
