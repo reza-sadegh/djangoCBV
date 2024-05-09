@@ -1,0 +1,59 @@
+
+{% extends 'mymaster.html' %}
+
+{% block mymessage %}
+<div class="container">
+<h2>Search for Employee</h2>
+
+<form  action="/search_res/" method="GET">
+{#    {% csrf_token %}#}
+    <table>
+        <tr><td>First Name :</td><td><input  name="first"></td><td>Last Name :</td><td><input name="last"></td>
+        <tr><td>min Age : </td><td><input name="minage"></td><td>max Age : </td><td><input name="maxage"></td></tr>
+        <tr>
+            <td>min Hire Date </td>
+            <td>
+                <input type="text" id="pdpGregorians" />
+                <input type="hidden" id="restxts"  name="start_date" ><br>
+                <script>
+                    $(function() {
+                        $("#pdpGregorians").persianDatepicker({
+                            formatDate: "YYYY-MM-DD",
+                            onSelect: function() {
+                                $("#restxts").val($("#pdpGregorians").attr("data-gdate"));
+                            }
+                        });
+                    });
+                </script>
+            </td>
+            <td>max Hire Date </td>
+            <td>
+                <input type="text" id="pdpGregoriane" />
+                <input type="hidden" id="restxte"  name="end_date" ><br>
+                <script>
+                    $(function() {
+                        $("#pdpGregoriane").persianDatepicker({
+                            formatDate: "YYYY-MM-DD",
+                            onSelect: function() {
+                                $("#restxte").val($("#pdpGregoriane").attr("data-gdate"));
+                            }
+                        });
+                    });
+                </script>
+            </td>
+            <td>Skill :</td>
+            <td>
+                <select name="skill" size="1" >
+                        <option>[ALL]</option>
+                    {% for x in skills %}
+                        <option>{{ x.skill }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+            <td><button type="submit" class="btn btn-primary">Submit</button></td>
+        </tr>
+    </table>
+
+</form>
+
+{% endblock %}
