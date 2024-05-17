@@ -32,3 +32,11 @@ services:
       - "5050:80"
 ------------------------------------
 docker-compose up -d
+-------------------------------------
+root@1dd49b98d3d8:/# psql -U postgres
+postgres=# \l     <========= List of databases
+postgres=# \du    <========= List of roles (users)
+postgres=# CREATE DATABASE CBVDB;
+postgres=# \c CBVDB
+CBVDB=# \dt
+CBVDB=# select * from myapp_employees;
