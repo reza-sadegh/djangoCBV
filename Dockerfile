@@ -1,11 +1,6 @@
 FROM python
 
-# RUN apt-get update && apt-get install -y python3.10 python3.10-dev
-# ENV PYTHONDONTWRITEBYTECODE 1
-# ENV PYTHONUNBUFFERED 1
-
-WORKDIR /djangoCBV
-
+WORKDIR /modirSakhteman
 RUN pip3 install --upgrade pip 
 
 COPY ./requirements.txt .
@@ -13,6 +8,6 @@ RUN pip3 install -r requirements.txt
 COPY . .
 EXPOSE 8000
 
-# RUN python3 manage.py migrate  --noinput
+RUN openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -subj "/C=IR/ST=TH/L=TH/O=TCT/OU=TMN/CN=home.local" -keyout cert.key  -out cert.crt
 
-CMD ["python3","manage.py","runserver","0.0.0.0:8000"]
+CMD ["python3","manage.py","runserver_plus","--cert-file","cert.crt","--key-file","cert.key"]
