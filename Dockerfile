@@ -1,6 +1,6 @@
 FROM python
 
-WORKDIR /modirSakhteman
+WORKDIR /djangoCBV
 RUN pip3 install --upgrade pip 
 
 COPY ./requirements.txt .
