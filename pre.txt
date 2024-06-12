@@ -50,7 +50,7 @@ CBVDB=# \dt
 -------------------------------------------------------------------------------
 pip install pyOpenSSL
 pip install django-extensions Werkzeug
-nano ~/PycharmProjects/modirSakhteman/modirSakhteman/settings.py
+nano ~/PycharmProjects/djangoCBV/djangoCBV/settings.py
 #########################################
 NSTALLED_APPS = [
     # other apps
