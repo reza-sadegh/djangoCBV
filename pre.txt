@@ -44,9 +44,9 @@ docker-compose up -d
 root@1dd49b98d3d8:/# psql -U postgres
 postgres=# \l     <========= List of databases
 postgres=# \du    <========= List of roles (users)
-postgres=# CREATE DATABASE modirSakhteman;
-postgres=# \c modirSakhteman
-modirSakhteman=# \dt
+postgres=# CREATE DATABASE "CBVDB";
+postgres=# \c CBVDB
+CBVDB=# \dt
 -------------------------------------------------------------------------------
 pip install pyOpenSSL
 pip install django-extensions Werkzeug
